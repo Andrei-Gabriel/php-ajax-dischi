@@ -19,16 +19,16 @@
         </header>
         <section class="list-container">
             <div class="form-container">
-                <!-- <form class="search">
+                <form class="search">
                     <input class="text-search" type="text" placeholder="Cerca" v-model="testoRicerca">
-                    <button class="btn-search" @click.prevent="$emit('ricerca', testoRicerca)">cerca</button>
-                </form> -->
+                    <button class="btn-search" v-on:click.prevent="metodoRicerca(testoRicerca)">cerca</button>
+                </form>
             </div>
             <div v-if="DATA == null" class="loader">
                 Loading
             </div>
             <div v-else class="contain">
-                <div class="card" v-for="dato in DATA">
+                <div class="card" v-for="dato in DATAfiltered">
                     <div class="album">
                         <img :src="dato.poster">
                         <h3>{{dato.title}}</h3>

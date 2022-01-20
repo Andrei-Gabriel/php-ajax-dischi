@@ -1,21 +1,24 @@
 const app = new Vue({
     el: "#app",
     data: {
-        DATA: []
+        testoRicerca: "",
+        DATA: null,
+        DATAfiltered: null,
     },
 
     created() {
         axios.get('http://localhost/php-ajax-dischi/backend.php')
         .then((response) => {
             this.DATA = response.data;
+            this.DATAfiltered = response.data;
         })
     },
 
-    // methods: {
-    //     metodoRicerca(research) {
-    //         this.albumsFiltered = this.albums.filter((elem) => {
-    //             return elem.title.toLowerCase().includes(research.toLowerCase());
-    //         });
-    //     }
-    // }
+    methods: {
+        metodoRicerca(research) {
+            this.DATAfiltered = this.DATA.filter((elem) => {
+                return elem.title.toLowerCase().includes(research.toLowerCase());
+            });
+        }
+    }
 })
