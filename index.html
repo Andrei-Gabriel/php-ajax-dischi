@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <i class="fab fa-spotify"></i>
+        <!-- <img src="../assets/logo-small.svg" alt=""> -->
+    </header>
+    <section class="list-container">
+        <div class="form-container">
+            <form class="search">
+                <input class="text-search" type="text" placeholder="Cerca" v-model="testoRicerca">
+                <button class="btn-search" @click.prevent="$emit('ricerca', testoRicerca)">cerca</button>
+            </form>
+        </div>
+        <div v-if="albums != null" class="loader">
+            Loading
+        </div>
+        <div v-else class="contain">
+            <div class="card" v-for="(album, index) in albumsFiltered" :key="index">
+                <div class="album">
+                    <img :src="info.poster">
+                    <h3>{{info.title}}</h3>
+                    <span class="name">{{info.author}}</span>
+                    <span class="date">{{info.year}}</span>
+                </div>
+            </div>  
+        </div>
+    </section>
+</body>
+</html>
