@@ -4,36 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <title>Document</title>
-
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header>
-        <i class="fab fa-spotify"></i>
-        <!-- <img src="../assets/logo-small.svg" alt=""> -->
-    </header>
-    <section class="list-container">
-        <div class="form-container">
-            <form class="search">
-                <input class="text-search" type="text" placeholder="Cerca" v-model="testoRicerca">
-                <button class="btn-search" @click.prevent="$emit('ricerca', testoRicerca)">cerca</button>
-            </form>
-        </div>
-        <div v-if="albums != null" class="loader">
-            Loading
-        </div>
-        <div v-else class="contain">
-            <div class="card" v-for="(album, index) in albumsFiltered" :key="index">
-                <div class="album">
-                    <img :src="info.poster">
-                    <h3>{{info.title}}</h3>
-                    <span class="name">{{info.author}}</span>
-                    <span class="date">{{info.year}}</span>
-                </div>
-            </div>  
-        </div>
-    </section>
+
+    <div id="app">
+        <header>
+            <i class="fab fa-spotify"></i>
+        </header>
+        <section class="list-container">
+            <div class="form-container">
+                <!-- <form class="search">
+                    <input class="text-search" type="text" placeholder="Cerca" v-model="testoRicerca">
+                    <button class="btn-search" @click.prevent="$emit('ricerca', testoRicerca)">cerca</button>
+                </form> -->
+            </div>
+            <div v-if="DATA == null" class="loader">
+                Loading
+            </div>
+            <div v-else class="contain">
+                <div class="card" v-for="dato in DATA">
+                    <div class="album">
+                        <img :src="dato.poster">
+                        <h3>{{dato.title}}</h3>
+                        <span class="name">{{dato.author}}</span>
+                        <span class="date">{{dato.year}}</span>
+                    </div>
+                </div>  
+            </div>
+        </section>
+    </div>
 
     <script src="main.js"></script>
 </body>

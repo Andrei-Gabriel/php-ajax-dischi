@@ -17,7 +17,7 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-    header i {
+    i {
         font-size: 55px;
         color: #1ed760;
         background-color: #000;
@@ -56,8 +56,8 @@ header {
         padding: 20px;
         min-height: 370px;
         max-height: 370px;
-        overflow-y: scroll;
         width: calc(20% - 40px);
+        /* overflow-y: auto; */
         margin: 10px 20px;
         background-color: #2e3a46;
     }
